@@ -72,12 +72,12 @@ class Place(BaseModel, Base):
         backref="place",
         cascade="all, delete-orphan"
     )
-    amenities = relationship(
-        "Amenity",
-        secondary="place_amenity",
-        viewonly=False,
-        back_populates='place_amenities'
-    )
+    # amenities = relationship(
+    #     "Amenity",
+    #     secondary="place_amenity",
+    #     viewonly=False,
+    #     back_populates='place_amenities'
+    # )
 
     if getenv("HBNB_TYPE_STORAGE", None) != "db":
         city_id = ""
