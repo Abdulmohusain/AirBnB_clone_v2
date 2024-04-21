@@ -3,6 +3,7 @@
 from flask import Flask, render_template
 from models import storage
 from models.state import State
+from models.city import City
 
 app = Flask(__name__)
 
@@ -13,8 +14,8 @@ def tear_down(exception):
     storage.close()
 
 
-@app.route("/states_list", strict_slashes=False)
-def states():
+@app.route("/cities_by_states", strict_slashes=False)
+def cities():
     """Home page"""
     all_states = sorted(storage.all(State).values(), key=lambda x: x.name)
     return render_template('7-states_list.html', states=all_states)
